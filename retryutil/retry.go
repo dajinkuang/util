@@ -4,8 +4,8 @@ package retryutil
 func Retry(limit int, do func() bool) {
 	for i := 0; i < limit; i++ {
 		continueRetry := do()
-		if continueRetry {
-			continue
+		if !continueRetry {
+			return
 		}
 	}
 }
