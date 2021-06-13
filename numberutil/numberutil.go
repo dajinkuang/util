@@ -11,15 +11,15 @@ func Float64Round(f float64, n int) float64 {
 	format := "%." + strconv.Itoa(n) + "f"
 	resultNumber, _ := strconv.ParseFloat(fmt.Sprintf(format, f), 64)
 	if resultNumber > f { // 特殊例子，179.79 格式化为 179.7
-		resultNumber = resultNumber - dotPrecision(n)
+		resultNumber = resultNumber - DotPrecision(n)
 		resultNumber, _ = strconv.ParseFloat(fmt.Sprintf(format, resultNumber), 64)
 	}
 	return resultNumber
 }
 
-// dotPrecision 根据float的小数精度位数，获取数值精度
+// DotPrecision 根据float的小数精度位数，获取数值精度
 // 比如：n=-1--->1 n=1--->0.1 n=2--->0.01
-func dotPrecision(n int) float64 {
+func DotPrecision(n int) float64 {
 	if n <= 0 {
 		return 1
 	}
