@@ -10,8 +10,7 @@ func ClearTimer(pendingClearTimer *time.Timer) {
 	if pendingClearTimer.Stop() || len(pendingClearTimer.C) <= 0 {
 		return
 	}
-	var i = 0
-	for ; i < len(pendingClearTimer.C); i++ {
+	for i := 0; i < len(pendingClearTimer.C); i++ {
 		_ = <-pendingClearTimer.C
 		continue
 	}
