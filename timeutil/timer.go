@@ -2,17 +2,17 @@ package timeutil
 
 import "time"
 
-// ResetTimer 重置timer
-func ResetTimer(pendingResetTimer *time.Timer) {
-	if pendingResetTimer == nil {
+// ClearTimer 清空timer
+func ClearTimer(pendingClearTimer *time.Timer) {
+	if pendingClearTimer == nil {
 		return
 	}
-	if pendingResetTimer.Stop() || len(pendingResetTimer.C) <= 0 {
+	if pendingClearTimer.Stop() || len(pendingClearTimer.C) <= 0 {
 		return
 	}
 	var i = 0
-	for ; i < len(pendingResetTimer.C); i++ {
-		_ = <-pendingResetTimer.C
+	for ; i < len(pendingClearTimer.C); i++ {
+		_ = <-pendingClearTimer.C
 		continue
 	}
 	return
